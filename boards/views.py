@@ -12,3 +12,11 @@ def home(request):
     # response_html = '<br>'.join(boards_names)
 
     return render(request, 'home.html', {'boards': boards})
+
+
+def board_topics(request, pk):
+    try:
+        board = Board.objects.get(pk=pk)
+    except Board.DoesNotExist:
+        raise Http404
+    return render(request, 'topics.html', {'board': board})

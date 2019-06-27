@@ -1,17 +1,10 @@
-{% load static %}<!DOCTYPE html>
+{% extends 'base.html' %}
 
+{% block breadcrumb %}
+<li class="breadcrumb-item active"> Boards</li>
+{% endblock %}
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Boards</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'  %}">
-  </head>
-  <body>
-    <div class="container">
-      <ol class="breadcrumb my-4">
-        <li class= "breadcrumb-item active"> Boards</li>
-      </ol>
+{% block content %}
 
     <table class="table">
       <thead class="thead-inverse">
@@ -26,7 +19,8 @@
           {% for board in boards %}
             <tr>
               <td>
-                {{ board.name }} <br>
+                <a href="{% url 'board_topics' board.pk}">
+                {{ board.name }} </a>
                 <small class="text-muted d-block">{{ board.description}} </small>
               </td>
               <td class="algin-middle">0</td>
@@ -37,7 +31,6 @@
           {% endfor %}
         </tbody>
       </table>
-  </body>
-</html>
+  {% endblock %}
 
 
